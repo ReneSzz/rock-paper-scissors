@@ -10,7 +10,7 @@
     <script> 
 
 let computerScore = 0; 
-let playerScore = 1; 
+let playerScore = 0; 
 let gameOutcome = "";
 let playerChoice = ""; 
 
@@ -39,12 +39,23 @@ if (computerChoice === 3) {
 
 function playRound (playerChoice, computerChoice) { 
 
+
+playerSelection = prompt("Enter rock, paper, or scissors.");
+
+playerChoice = playerSelection.toLowerCase();
+
+
 if (playerChoice === computerChoice) {
 
     console.log("It was a tie!");
     playerScore++
     computerScore++
 }
+
+
+
+
+
 
 // outcomes if player picks rock 
 
@@ -93,7 +104,23 @@ if (playerChoice === "scissors" && computerChoice === "paper")
 }
 
 
+function game () { 
 
+
+    for (let i = 0; i < 5; i++) {
+        playRound(playerChoice, computerChoice)
+    }
+
+    if (playerScore > computerScore)
+    console.log(` You won! The score was ${playerScore} - ${computerScore} !`)
+
+    if (playerScore < computerScore)
+    console.log(` You lost! The score was ${playerScore} - ${computerScore} !`)
+
+    if (playerScore === computerScore) {
+        console.log(`It was a tie! ${playerScore} - ${computerScore}` )
+    }
+}
 
 
 
@@ -109,14 +136,12 @@ if (playerChoice === "scissors" && computerChoice === "paper")
 
 
 //gets player choice 
-playerSelection = prompt("Enter rock, paper, or scissors.");
 
-playerChoice = playerSelection.toLowerCase();
 
 computerPlay();
-playRound(playerChoice, computerChoice);
-console.log(computerChoice);
-console.log(playerChoice);
+game();
+
+
 
 
 
